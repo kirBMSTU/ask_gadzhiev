@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+				<div class="my-content col">
+					<h1>Registration</h1>
+					<hr>
+					<form class="settings">
+						<div class="from-group row">
+							<div class="col-sm-3"></div>
+							<div class="col-sm-9">
+								<div class="incorrect">
+									Sorry, this Email already registered!
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="login" class="col-sm-3 col-form-label">
+								Login
+							</label>
+							<div class="col-sm-9">
+								<input type="text" required class="form-control" id="login" placeholder="Enter your login">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="inputEmail" class="col-sm-3 col-form-label">
+								Email
+							</label>
+							<div class="col-sm-9 ">
+								<input type="email" class="form-control" id="inputEmail"  required placeholder="Enter a valid Email">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="inputNick" class="col-sm-3 col-form-label">
+								Nick
+							</label>
+							<div class="col-sm-9">
+								<input required type="text" class="form-control" id="inputNick" placeholder="Enter your nickname">
+							</div>
+						</div>
+						<hr>
+						<div class="form-group row">
+							<label for="inputEmail" class="col-sm-3 col-form-label">
+								Password
+							</label>
+							<div class="col-sm-9">
+								<input type="password" required class="form-control" id="inputPassword" placeholder="Enter your password">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputEmail" class="col-sm-3 col-form-label">
+								Confrim password
+							</label>
+							<div class="col-sm-9">
+								<input type="password" required class="form-control" id="inputPassword" placeholder="Confrim password">
+							</div>
+						</div>
+						<hr>
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label" for="fileInput">Upload avatar</label>
+							<div class="col-sm-9">
+								<div class="avatar-block-md">
+									<img src="{% static 'img/default_avatar.jpg' %}" alt="" class="avatar-md mb-3">
+									<input type="file" class="file-btn">
+								</div>
+							</div>
+							
+						</div>
+		
+
+						<div class="form-group row">
+							<div class="col-sm-3"></div>
+							<div class="col-sm-9">
+								<button href="" class="btn" id="register-btn">Register</button>
+							</div>
+						</div>
+
+
+					</form>
+					
+				</div> 
+
+
+{% endblock %}

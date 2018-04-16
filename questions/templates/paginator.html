@@ -1,0 +1,28 @@
+<div class="row justify-content-center mb-4">
+	<ul class="my-pagination">
+		<a href="?page=1">
+			<li class="my-page-item"><<</li>
+		</a>
+		{% if posts.has_previous %}
+		<a href="?page=1">
+			<li class="my-page-item">{{ posts.previous_page_number }}</li>
+		</a>
+		{% endif %}
+
+		<a href="?page={{ posts.number }}">
+			<li class="my-page-item">
+			{{ posts.number }}
+			</li>
+		</a>
+
+		{% if posts.has_next %}
+		<a href="?page={{ posts.next_page_number }}">
+			<li class="my-page-item">{{ posts.next_page_number }}</li>
+		</a>
+		{% endif %}
+
+		<a href="?page={{ posts.paginator.num_pages }}">
+			<li class="my-page-item">>></li>
+		</a>
+	</ul>
+</div>

@@ -1,0 +1,33 @@
+<div class="row post-block">
+	<div class="post-left">
+		<div class="avatar-block-md">
+			{% load static %}
+			<img src="{% static 'img/default_avatar.jpg' %}" class="avatar-md">
+		</div>
+		<div class="post-author">
+			<a class="" href="">{{ answer.answer_author }}</a>
+		</div>
+		<div class="likes">
+			<a href="" class="fas fa-minus"></a>
+			<div class="rating text-center">{{ answer.rating }}</div>
+			<a href="" class="fas fa-plus"></a>
+		</div>
+	</div>
+	<div class="col post-right ">
+		<p class="">{{ answer.answer_text }}</p>
+		<div class="post-footer container">
+			<div class="row">
+				<div class="col">
+					<label for="correct1">
+						Correct 
+					</label>
+					<input class="ml-1" type="checkbox" id="correct1" 
+					{% if answer.correct %}
+					checked
+					{% endif %}
+					>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

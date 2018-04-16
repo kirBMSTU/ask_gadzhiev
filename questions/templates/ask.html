@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="my-content col">
+	<h1>New Question</h1>
+	<hr>
+	<form class="settings">
+		<div class="from-group row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-9">
+				<div class="incorrect">
+					Max number of tags: 3!
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="login" class="col-sm-3 col-form-label">
+				Title
+			</label>
+			<div class="col-sm-9">
+				<input type="text" required class="form-control" id="questionTitle" value="" placeholder="Enter title of your question">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputEmail" class="col-sm-3 col-form-label">
+				Text
+			</label>
+			<div class="col-sm-9">
+				<textarea class="my-textarea form-control" required name="" id="" placeholder="Enter your question"></textarea>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="login" class="col-sm-3 col-form-label">
+				Tags
+			</label>
+			<div class="col-sm-9">
+				<input type="text" required class="form-control" id="tagsQuestion" value="" placeholder="Enter tags for your question (max: 3)">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-9">
+				<button href="{% url 'index' %}" class="btn" id="ask-question-btn">Ask!</button>
+			</div>
+		</div>
+
+
+	</form>
+	
+</div>
+
+{% endblock %}

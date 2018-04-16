@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+{% if page_type == 'index' %}
+	<div class="sort-btns">
+		<a class="enabled-sort-btn" href="{% url 'index' %}">
+			New questions
+		</a>
+		<a class="disabled-sort-btn" href="{% url 'hot'%}">
+			Hot questions
+		</a>
+	</div>
+{% else %}
+	{% if page_type == 'hot' %} 
+	<div class="sort-btns">
+		<a class="disabled-sort-btn" href="{% url 'index' %}">
+			New questions
+		</a>
+		<a class="enabled-sort-btn" href="{% url 'hot'%}">
+			Hot questions
+		</a>
+	</div>
+	{% else %}
+	<div class="sort-btns">
+		<a class="enabled-sort-btn" href="">
+			Tag: #{{ tag }}
+		</a>
+	</div>
+	{% endif %}
+{% endif %}
+
+<div class="">
+
+	{% for post_iter in posts%}
+		{% include 'post.html' with post=post_iter %}
+	{% empty %}
+		<h6>Sorry, there is no posts now %(</h6>
+	{% endfor %}		
+
+	{% include 'paginator.html' %}
+	
+</div>
+{% endblock %}

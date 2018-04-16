@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>How&amp;Why | {{ title }}</title>
+
+		<!-- Bootstrap CSS -->
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+		
+	</head>
+	<body>
+		<nav class="navbar navbar-custom navbar-expand-lg navbar-dark sticky-top">
+			<a class="navbar-brand" href="{% url 'index' %}">
+    			<img src="{% static 'img/left.png' %}" height="30" class="d-inline-block align-top" alt="">
+    			<span class="nav-title">How&amp;Why</span>
+    			<img src="{% static 'img/right.png' %}" height="30" class="d-inline-block align-top" alt="">
+  			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+			aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="ask-search-block collapse navbar-collapse" id="navbarSupportedContent">
+				<form action="" class="my-2 my-lg-0 ml-auto mr-0">
+					<div class="form-row">
+						{% if authentificated %}
+							<a href="{% url 'ask' %}" class="btn " id="btn-ask">Ask!</a>
+						{% else %}
+							<a href="{% url 'login' %}" class="btn " id="btn-ask">Ask!</a>
+						{% endif %}
+						<div class="search-block">
+							<input type="text" class="search-inline form-control" placeholder="Search" aria-label="Search" id="search-input">
+							<button href="" class="search-inline btn bg-success" id="search-btn">
+								<i class="fas fa-search"></i>
+							</button>
+						</div>
+					</div>
+				</form>
+
+				{% if authentificated %}
+				<!-- Авторизированный -->
+				<div class="auth container p-0 m-0">
+				 	<div class="avatar-block-sm container">
+			 			<a href="{% url 'settings' %}">
+				    		<img class="avatar-sm" src="{% static 'img/default_avatar.jpg' %}" alt="avatar">
+				   		</a>
+				 	</div>
+			 		<div class="auth-info-block container">
+						<div class="username p-0 m-0">
+					 		<div class="auth-item">
+					 			<a href="{% url 'settings' %}" class="auth-link">
+					 				{{ user.name }}
+					 			</a>
+					 		</div>
+					 	</div>
+						<div class="buttons p-0 m-0">
+							<div class="auth-item">
+								<a href="{% url 'settings' %}" class="auth-link">Settings</a>
+							</div>
+							<div class="auth-item">
+								<a href="{% url 'logout' %}" class="auth-link">Log out</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% else %}
+				<!-- Неавторизированный -->
+				<div class="auth container p-0 m-0">
+					<div class="auth-info-block container">
+						<div class="buttons p-0 m-0">
+							<div class="">
+								<a href="{% url 'login' %}" class="auth-link btn btn-outline-info">Sign in</a>
+							</div>
+							<div class="">
+								<a href="{% url 'signup' %}" class="auth-link btn btn-outline-info">Sign up</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+
+			</div>
+		</nav>
+		
+		<div class="main">
+			<div class="row">
+				<div class="col">
+					{% block content %}
+					{% endblock %}	
+				</div>
+
+				<div class="right col width=device-width">
+					<div class="right-hint">
+						<div class="tags-block right-block">
+							<div class="card-body">
+								<h2 class="card-title">#some#tags</h2>
+								{% for tag_item in tags_list %}
+									<a class="tag" href="{% url 'tag' tag_item|lower %}">
+										{{ tag_item }}
+									</a>
+								{% empty %}
+									<h6>Sorry, there is no tags now :(</h6>
+								{% endfor %}
+							</div>
+						</div>
+
+						<div class="members-block right-block">
+							<div class="card-body">
+								<h2 class="card-title">Best members:</h2>
+								<ul class="members-list">
+									{% for member in best_members %}
+									<li>{{ member.name }}</li>
+									{% empty %}
+										<h6>Sorry, there is no members now :( </h6>
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>		
+		<script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
+		<script src="{% static 'js/popper.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'js/fontawesome-all.js' %}"></script>
+		<!-- <script src="js/ask-btn.js"></script> -->
+	</body>
+</html>

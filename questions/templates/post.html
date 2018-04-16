@@ -1,0 +1,36 @@
+<div class="row post-block">
+	<div class="post-left">
+		<div class="avatar-block-md">
+			{% load static %}
+			<img src="{% static 'img/default_avatar.jpg' %}" class="avatar-md">
+		</div>
+		<a class="post-author" href="" disabled>{{ post.question_author }}</a>
+		<div class="likes">
+			<a href="" class="fas fa-minus"></a>
+			<div class="rating text-center">{{ post.rating }}</div>
+			<a href="" class="fas fa-plus"></a>
+		</div>
+	</div>
+	<div class="col post-right ">
+		<a href="{% url 'question' post.id %}"><h2>{{ post.question_title }}</h2></a>
+		<p class="truncate-text">{{ post.question_text|truncatechars:160 }}</p>
+		<div class="post-footer container">
+			<div class="row">
+				<div class="col-lg-3">
+					<a class="btn answer-btn" href="{% url 'question' post.id %}">
+					Answer</a>
+				</div>
+				<div class="col-lg-9 post-tags">
+					<div class="post-tags-title">Tags:</div>
+						{% for tag_item in post.tags.all %}
+							<a class="tag" href="{% url 'tag' tag_item|lower %}">
+								{{ tag_item }}
+							</a>
+						{% empty %}
+							<h6> no tags :(</h6>
+						{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

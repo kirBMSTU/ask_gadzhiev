@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="">
+	{% include 'post.html' with post=question only%}
+	<hr>
+	{% for answer_iter in answers %}
+		{% include 'answer.html' with answer=answer_iter only%}
+	{% empty %}
+	<h6>There is no answers now :(</h6>
+	{% endfor %}
+
+	{% if answers %}
+	<div class="row justify-content-center mb-4">
+		<ul class="my-pagination">
+			<li class="my-page-item">
+				<a href=""><<</a>
+			</li>
+			<li class="my-page-item">
+				<a href=""><</a>
+			</li>
+			<li class="my-page-item">
+				<a href="">1</a>
+			</li>
+			<li class="my-page-item">
+				<a href="">2</a>
+			</li>
+			<li class="my-page-item">
+				<a href="">3</a>
+			</li>
+			<li class="my-page-item">
+				<a href="">></a>
+			</li>
+			<li class="my-page-item">
+				<a href="">>></a>
+			</li>
+		</ul>
+	</div>
+	{% endif %}
+	<hr>
+	<div class="post-block">
+		<div class="form-group row">
+			<div class="container-fluid">
+				<textarea class="my-textarea" required name="" id="answer-textarea" placeholder="Enter your answer"></textarea>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-3">
+				<button href="" class="btn" id="answer-btn">Answer!</button>
+			</div>
+			<div class="col-sm-9">
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

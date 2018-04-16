@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+
+<div class="my-content">
+	<h1>Settings</h1>
+	<hr>
+	<form class="settings needs-validation">
+		<div class="form-group row">
+			<label for="staticLogin" class="col-sm-3 col-form-label">
+				Login
+			</label>
+			<div class="col-sm-9">
+				<input type="text" readonly class="form-control" id="staticLogin" value="kirBMSTU">
+				<i class="fas fa-lock"></i>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputEmail" class="col-sm-3 col-form-label">
+				Email
+			</label>
+			<div class="col-sm-9 ">
+				<input type="email" class="form-control" id="inputEmail" value="89260877524@ya.ru" required placeholder="Enter a valid Email">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputNick" class="col-sm-3 col-form-label">
+				Nick
+			</label>
+			<div class="col-sm-9">
+				<input required type="text" class="form-control" id="inputNick" value="Kirill Gadzhiev">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="fileInput">Upload avatar</label>
+			<div class="col-sm-9">
+				<div class="avatar-block-md">
+					<img src="{% static 'img/default_avatar.jpg' %}" alt="" class="avatar-md mb-3">
+				</div>
+				<br>
+				<input type="file" class="file-btn">
+			</div>
+
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-9">
+				<button href="" class="btn" id="apply-btn">Apply</button>
+			</div>
+		</div>
+
+
+	</form>
+	
+</div> 
+
+{% endblock %}
